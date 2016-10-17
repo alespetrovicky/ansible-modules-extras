@@ -25,7 +25,7 @@ module: zabbix_webscenario
 short_description: Zabbix web scenario creates/updates/deletes
 description:
    - This module allows you to manage web checks
-version_added: "2.2"
+version_added: "2.3"
 author:
     - Ales Petrovicky
     - Ladislav Novak
