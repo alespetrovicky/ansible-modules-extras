@@ -203,6 +203,7 @@ class WebScenario(object):
 
 
     def add_webscenario(self, webscenario_name, host_id, status, steps, authentication, ssl, update_interval, attempts, agent, http_proxy, variables, headers):
+        
         try:
             if self._module.check_mode:
                 self._module.exit_json(changed=True)
@@ -228,7 +229,7 @@ class WebScenario(object):
                 'verify_peer': verify_peer })
             if len(webscenario_list) >= 1:
                 return webscenario_list['httptestids'][0]
-        except Exception, e:
+        except Exception as e:
             self._module.fail_json(msg="Failed to create webscenario %s: %s" % (webscenario_name, e))
 
     def compare_steps(self, current_step, new_step):
@@ -299,7 +300,7 @@ class WebScenario(object):
                     self._module.exit_json(changed=True, result="Successfully updated Web Scenario %s"  % (webscenario_name))
             else:
                 self._module.exit_json(changed=False)    
-        except Exception, e:
+        except Exception as e:
             self._module.fail_json(msg="Failed to update WebScenario %s: %s" % (webscenario_name, e))
 
     def get_webscenario(self, webscenario_name):
@@ -312,7 +313,7 @@ class WebScenario(object):
             if self._module.check_mode:
                 self._module.exit_json(changed=True)
             self._zapi.httptest.delete([webscenario_id])
-        except Exception, e:
+        except Exception as e:
             self._module.fail_json(msg="Failed to delete Web Scenario %s: %s" % (webscenario_name, e))
 
     # get host by host name
@@ -401,7 +402,7 @@ def main():
     try:
         zbx = ZabbixAPI(server_url, timeout=timeout)
         zbx.login(login_user, login_password)
-    except Exception, e:
+    except Exception as e:
         module.fail_json(msg="Failed to connect to Zabbix server: %s" % e)
 
     webscenario = WebScenario(module, zbx)
