@@ -25,7 +25,7 @@ module: zabbix_webscenario
 short_description: Zabbix web scenario creates/updates/deletes
 description:
    - This module allows you to manage web checks
-version_added: "2.x"
+version_added: "2.2"
 author:
     - Ales Petrovicky
     - Ladislav Novak
@@ -62,13 +62,13 @@ options:
     status:
         description:
             - Status and function of the host.
-            - Possible values are: enabled and disabled
+            - 'Possible values are: enabled and disabled'
         required: false
         default: "enabled"
     state:
         description:
             - create/update or delete host.
-            - Possible values are: present and absent. If the host already exists, and the state is "present", just to update the host.
+            - 'Possible values are: present and absent. If the host already exists, and the state is "present", just to update the host.'
         required: false
         default: "present"
     timeout:
@@ -78,19 +78,19 @@ options:
     steps:
         description:
             - List of steps for WebScenario
-            - Please review the interface documentation for more information on the supported properties:
-            - https://www.zabbix.com/documentation/3.0/manual/api/reference/httptest/object#scenario_step
+            - 'Please review the interface documentation for more information on the supported properties:'
+            - 'https://www.zabbix.com/documentation/3.0/manual/api/reference/httptest/object#scenario_step'
         required: true
     authentication:
         description:
             - Authentication parameters
-            - Available parameters are: type(0 - (default) none; 1 - basic HTTP authentication; 2 - NTLM authentication), user, password
+            - 'Available parameters are: type(0 - (default) none; 1 - basic HTTP authentication; 2 - NTLM authentication), user, password'
         required: false
         default: {'type': 0}
     ssl:
         description:
             - SSL parameters
-            - Available parameters are: verify_host (boolean), verify_peer (boolean), cert_file, key_file, key_password
+            - 'Available parameters are: verify_host (boolean), verify_peer (boolean), cert_file, key_file, key_password'
         required: false
         default: {}
     update_interval:
@@ -152,6 +152,9 @@ EXAMPLES = '''
         retrieve_mode: '0'  # 0 - only body, 1 - only headers
         timeout: '15' # Request timeout in seconds. 
         variables: '' # Scenario step variables.
+'''
+
+RETURN = '''
 '''
 
 import logging
