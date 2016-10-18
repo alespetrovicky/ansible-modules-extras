@@ -52,23 +52,22 @@ options:
         default: null
     host_name:
         description:
-            - Technical name of the host.
-            - If the host has already been added, the host name won't be updated.
+            - Name of the host web scenario belongs to.
         required: true
     webscenario_name:
         description:
-            - List of host groups to add the host to.
+            - Name of web scenario.
         required: true
     status:
         description:
-            - Status and function of the host.
+            - Status and function of the web scenario.
             - 'Possible values are: enabled and disabled'
         required: false
         default: "enabled"
     state:
         description:
-            - create/update or delete host.
-            - 'Possible values are: present and absent. If the host already exists, and the state is "present", just to update the host.'
+            - create/update or delete web scenario.
+            - 'Possible values are: present and absent. If the web scenario already exists, and the state is "present", just to update the web scenario.'
         required: false
         default: "present"
     timeout:
@@ -77,7 +76,7 @@ options:
         default: 10
     steps:
         description:
-            - List of steps for WebScenario
+            - List of steps for Web Scenario
             - 'Please review the interface documentation for more information on the supported properties:'
             - 'https://www.zabbix.com/documentation/3.0/manual/api/reference/httptest/object#scenario_step'
         required: true
@@ -110,7 +109,7 @@ options:
         default: "Zabbix"
     http_proxy:
         description:
-            - Proxy that will be used by the web scenario given as http://[username[:password]@]proxy.example.com[:port].
+            - 'Proxy that will be used by the web scenario given as http://[username[:password]@]proxy.example.com[:port].'
         required: false
         default: ""
     variables:
@@ -171,7 +170,7 @@ except ImportError:
 
 class DictDiffer(object):
     """
-    Calculate the difference between two dictionaries as:
+    Helper class to calculate the difference between two dictionaries as:
     (1) items added
     (2) items removed
     (3) keys same in both but changed values
@@ -421,7 +420,7 @@ def main():
             # remove webscenario
             existing_webscenario = webscenario.get_webscenario(webscenario_name)
             webscenario.delete_webscenario(existing_webscenario['httptestid'], existing_webscenario['name'])
-            module.exit_json(changed=True, result="Successfully delete Web Scenario %s" % webscenario_name)
+            module.exit_json(changed=True, result="Successfully delete web scenario %s" % webscenario_name)
         else:
             module.exit_json(changed=False) 
     
