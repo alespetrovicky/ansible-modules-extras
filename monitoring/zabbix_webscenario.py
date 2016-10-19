@@ -428,7 +428,7 @@ def main():
         if is_webscenario_exist:
             # update
             webscenario.update_webscenario(webscenario_name, host_id, status, steps, authentication, ssl, update_interval, attempts, agent, http_proxy, variables, headers)
-            module.exit_json(changed=True, result="Successfully added web scenario %s" % (webscenario_name))
+            module.exit_json(changed=True, result="Successfully updated web scenario %s" % (webscenario_name))
             
         else:
             # add
